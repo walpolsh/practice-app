@@ -4,7 +4,10 @@ import './pomodoro.css'
 export default class Pomodoro extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { seconds: parseInt(props.seconds) };
+    this.state = {
+      seconds: parseInt(props.seconds),
+      count: 0
+    };
     this.increase = this.increase.bind(this);
     this.decrease = this.decrease.bind(this)
   }
@@ -25,11 +28,28 @@ export default class Pomodoro extends React.Component {
       seconds: prevState.seconds - 60
     }));
   }
+
   startTimer() {
     clearInterval(this.interval);
     this.interval = setInterval(() => this.tick(), 1000);
   }
 
+  stopTimer() {
+    clearInterval(this.interval);
+  }
+
+  increaseCount() {
+    this.setState(prevState => ({
+      count: prevState.count += 1,
+    }));
+  }
+
+  resetTimer() {
+    clearInterval(this.interval);
+    this.setState(prevState => ({
+      seconds: prevState.seconds = 1500
+    }));
+  }
   componentWillUnmount() {
     clearInterval(this.interval);
   }
@@ -53,21 +73,25 @@ export default class Pomodoro extends React.Component {
           return ret;
     }
     let display = null;
-    let button = null;
+    let button1, button2 = null;
     let plus, minus = null;
+
     if (this.state.seconds <= 0) {
       display = <div>DONE!</div>
-      button = <button onClick={() => {this.state.seconds = this.props.seconds}}>Reset</button>
-
+      button1 = <button className='buttons' onClick={this.resetTimer.bind(this)}>Reset</button>
+      this.state.count += 1
     } else {
       display = <div>{fancyTimeFormat(time)}</div>
-      button = <button onClick={this.startTimer.bind(this)}>Start</button>
-      plus = <button onClick={this.increase}>+</button>
-      minus = <button onClick={this.decrease}>-</button>
+      button1 = <button className='buttons' onClick={this.startTimer.bind(this)}>Start</button>
+      button2 = <button className='buttons' onClick={this.stopTimer.bind(this)}>Stop</button>
+      plus = <button className='buttons' id='increase' onClick={this.increase}>+</button>
+      minus = <button className='buttons' onClick={this.decrease}>-</button>
     }
+
     return (
       <div>
-        <div id='timer'><div id='innertimer'>{display}{plus}{button}{minus}</div></div>
+        <div>Work Periods: {this.state.count}</div>
+        <div id='timer'><div id='innertimer'>{display}{plus}{button1}{button2}{minus}</div></div>
       </div>
     );
   }
