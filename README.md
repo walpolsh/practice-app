@@ -1,7 +1,8 @@
 # practice-app
 
-This is an app to help my guitar students make their practice sessions more productive. 
-Each practice card features a timer, metronome, and todo list.
+This is an app to help my guitar students make the most of their practice sessions.
+
+Each practice card features a timer, metronome, and a todo list to help them stay organized, and make progress faster.
 
 Future iterations:
 - Refine CSS/UI
