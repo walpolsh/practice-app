@@ -17,6 +17,19 @@ class Metronome extends Component {
     this.click2 = new Audio(click2)
   }
 
+  playClick = () => {
+    const { count, beatsPerMeasure } = this.state;
+
+    if(count % beatsPerMeasure === 0) {
+      this.click2.play();
+    } else {
+      this.click1.play();
+    }
+
+    this.setState(state => ({
+      count: (state.count + 1) % state.beatsPerMeasure
+    }));
+  }
 
   handleBpmChange = event => {
     const bpm = event.target.value;
@@ -33,41 +46,22 @@ class Metronome extends Component {
       this.setState({ bpm });
     }
   }
-  //If we’d used a regular function like handleBpmChange() { ... }, then the this binding would be lost when it gets passed to the onChange handler in render.
 
-  startStop = () => {
+  stopStartPlaying = () => {
     if(this.state.playing) {
-      //If the metronome is playing, stop it: clear the timer, and set the playing state to false. This will cause the app to re-render, and the button will say “Start” again.
       clearInterval(this.timer)
       this.setState({
         playing: false
       });
     } else {
-      //If the metronome is not playing, start a timer that plays a click every few milliseconds, depending on the bpm.
-      // setInterval will schedule the first “click” to be one beat in the future, the second argument to setState . Once the state is set, it will play one click.
-
       this.timer = setInterval(this.playClick, (60 / this.state.bpm) * 1000);
       this.setState({
-        //We’ll use count to keep track of which beat we’re on, incrementing it with each “click”, so we need to reset it here.
         count: 0,
         playing: true
       }, this.playClick);
     }
   }
 
-  playClick = () => {
-    const { count, beatsPerMeasure } = this.state;
-
-    if(count % beatsPerMeasure === 0) {
-      this.click2.play();
-    } else {
-      this.click1.play();
-    }
-
-    this.setState(state => ({
-      count: (state.count + 1) % state.beatsPerMeasure
-    }));
-  }
 
   render() {
     const { playing, bpm } = this.state;
@@ -83,7 +77,7 @@ class Metronome extends Component {
             onChange={this.handleBpmChange}
           />
         </div>
-        <button onClick={this.startStop}>
+        <button onClick={this.stopStartPlaying}>
           {playing ? 'Stop' : 'Start'}
         </button>
       </div>

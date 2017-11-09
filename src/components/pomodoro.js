@@ -63,15 +63,15 @@ export default class Pomodoro extends React.Component {
     function fancyTimeFormat(time) {
           // Hours, minutes and seconds
           // Output like "1:01" or "4:03:59" or "123:03:59"
-          var ret = "";
+          var result = "";
           if (hrs > 0) {
-              ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
+              result += "" + hrs + ":" + (mins < 10 ? "0" : "");
           }
-
-          ret += "" + mins + ":" + (secs < 10 ? "0" : "");
-          ret += "" + secs;
-          return ret;
+          result += "" + mins + ":" + (secs < 10 ? "0" : "");
+          result += "" + secs;
+          return result;
     }
+
     let display = null;
     let button1, button2 = null;
     let plus, minus = null;
@@ -79,15 +79,16 @@ export default class Pomodoro extends React.Component {
     if (this.state.seconds <= 0) {
       display = <div>DONE!</div>
       button1 = <button className='buttons' onClick={this.resetTimer.bind(this)}>Reset</button>
-      this.state.count += 1
+      this.state.count + 1
+
     } else {
+
       display = <div>{fancyTimeFormat(time)}</div>
       button1 = <button className='buttons' onClick={this.startTimer.bind(this)}>Start</button>
       button2 = <button className='buttons' onClick={this.stopTimer.bind(this)}>Stop</button>
       plus = <button className='buttons' id='increase' onClick={this.increase}>+</button>
       minus = <button className='buttons' onClick={this.decrease}>-</button>
     }
-
     return (
       <div>
         <div>Work Periods: {this.state.count}</div>
