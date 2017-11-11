@@ -19,10 +19,6 @@
  height: auto;
  overflow:hidden;
  position:relative;
- -webkit-user-select: none;
- -moz-user-select: none;
- -ms-user-select: none;
- user-select: none;
  cursor:default;
  }
 
@@ -31,12 +27,6 @@
  z-index : 1;
  position:relative;
 }
-
-/*
-
-filler width is set to 200px (i.e. equal to width of the timer) so that it completely covers the timer in background. The height is initially set to 0px and it increases as timer                   progresses to give background fill effect.
-
-*/
 
 #filler{
  background : #ddffcc;

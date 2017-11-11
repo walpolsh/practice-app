@@ -90,7 +90,7 @@ export default class Pomodoro extends React.Component {
       minus = <button className='buttons' onClick={this.decrease}>-</button>
     }
     return (
-      <div>
+      <div id='container'>
         <div>Work Periods: {this.state.count}</div>
         <div id='timer'><div id='innertimer'>{display}{plus}{button1}{button2}{minus}</div></div>
       </div>
