@@ -61,9 +61,24 @@ class Metronome extends Component {
       }, this.playClick);
     }
   }
+  componentWillMount() {
+      document.addEventListener("keydown", this.onKeyPressed.bind(this));
+  }
 
+  componentWillUnmount() {
+      document.removeEventListener("keydown", this.onKeyPressed.bind(this));
+  }
+
+  onKeyPressed = (e) => {
+      if (e.keyCode === 32) {
+        console.log(e)
+        this.stopStartPlaying();
+      }
+
+  }
 
   render() {
+
     const { playing, bpm } = this.state;
     return (
       <div className="metronome">
@@ -77,7 +92,7 @@ class Metronome extends Component {
             onChange={this.handleBpmChange}
           />
         </div>
-        <button onClick={this.stopStartPlaying}>
+        <button onClick={this.stopStartPlaying} onKeyDown={this.onKeyPressed} tabIndex='0'>
           {playing ? 'Stop' : 'Start'}
         </button>
       </div>
