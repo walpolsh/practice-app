@@ -1,20 +1,24 @@
 #container{
  border:1px solid #333;
  border-radius :20px;
- width:400px;
+ width:80%;
  margin:20px auto;
  padding:20px;
  text-align:center;
  background : #333;
 }
 
+#innertimer {
+  font-size: 16px;
+}
+
 #timer{
- color:#f00;
+ color:#b2cde0;
  font-size:50px;
  margin:0 auto;
- border : 5px solid red;
+ border : 5px solid #6497b2;
  border-radius:50%;
- width:250px;
+ width: 50%;
  padding: 10px;
  height: auto;
  overflow:hidden;
@@ -37,14 +41,13 @@
 }
 
 .buttons {
- background:#4da6ff;
- border:none;
- color:#fff;
+ text-align: center;
+ background:#001f4b;
+ border: 1px solid #832420;
+ color:#b2cde0;
  cursor:pointer;
- padding:5px;
  width:50px;
- margin:10px auto;
  font-size:14px;
- height : 20px;
+ height: 20px;
  border-radius : 50px;
 }

@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './pomodoro.css'
 
 export default class Pomodoro extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      seconds: parseInt(props.seconds),
+      seconds: parseInt(props.seconds, 0),
       count: 0
     };
     this.increase = this.increase.bind(this);
@@ -18,9 +18,9 @@ export default class Pomodoro extends React.Component {
   }
 
   increase() {
-    this.setState({
-      seconds: this.state.seconds += 60
-    });
+    this.setState(prevState => ({
+      seconds: prevState.seconds += 60
+    }));
   }
 
   decrease() {
@@ -79,7 +79,12 @@ export default class Pomodoro extends React.Component {
     if (this.state.seconds <= 0) {
       display = <div>DONE!</div>
       button1 = <button className='buttons' onClick={this.resetTimer.bind(this)}>Reset</button>
-      this.state.count + 1
+      if (this.state.secods === 0) {
+
+        this.setState(prevState => ({
+          count: prevState.count + 1
+        }))
+      }
 
     } else {
 
