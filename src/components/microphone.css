@@ -15,3 +15,8 @@ h1 {
 .oscilloscope {
   margin-bottom: 20px;
 }
+
+canvas.sound-wave {
+  height: 100;
+  width: 90%;
+}

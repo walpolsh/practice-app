@@ -40,7 +40,7 @@ export default class Pomodoro extends React.Component {
 
   increaseCount() {
     this.setState(prevState => ({
-      count: prevState.count += 1,
+      count: prevState.count += 1
     }));
   }
 
@@ -57,13 +57,13 @@ export default class Pomodoro extends React.Component {
   render() {
     console.log(this.state.seconds)
     let time = this.state.seconds
-    var hrs = ~~(time / 3600); //~~ substitutes Math.floor()
-    var mins = ~~((time % 3600) / 60);
-    var secs = time % 60;
+    const hrs = ~~(time / 3600); //~~ substitutes Math.floor()
+    const mins = ~~((time % 3600) / 60);
+    const secs = time % 60;
     function fancyTimeFormat(time) {
           // Hours, minutes and seconds
           // Output like "1:01" or "4:03:59" or "123:03:59"
-          var result = "";
+          let result = "";
           if (hrs > 0) {
               result += "" + hrs + ":" + (mins < 10 ? "0" : "");
           }
