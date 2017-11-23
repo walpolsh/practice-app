@@ -39,13 +39,17 @@ export default class Microphone extends Component {
   render() {
     let audio = null;
     let blob = this.state.blobURL
-    if(this.state.blobURL !== null && this.state.isRecording === false ) {
+
+    if(this.state.blobURL !== null && !this.state.isRecording) {
       audioArr.push(blob)
       audio = audioArr.map((x, i) => (<div key={i}>{i+1}. <audio ref="audioSource" controls="controls" src={x}></audio><button>X</button></div>))
+
     } else if (audioArr.length > 0) {
       audio = audioArr.map((x, i) => (<div key={i}>{i+1}. <audio ref="audioSource" controls="controls" src={x}></audio><button>X</button></div>))
+
     } else {
       audio = <p>*empty*</p>
+
     }
     console.log('audioArr is: ', audioArr)
     return (
@@ -58,7 +62,7 @@ export default class Microphone extends Component {
           strokeColor="#041c4c"
           backgroundColor="#3094c0" />
         <div className='button-container'>
-          {!this.state.record ? <button onClick={this.startRecording} type="button">Record</button> : <button onClick={this.stopRecording} type="button">Stop</button>}
+          { !this.state.record ? <button onClick={this.startRecording} type="button">Record</button> : <button onClick={this.stopRecording} type="button">Stop</button> }
         </div>
         <div>
           {audio}
