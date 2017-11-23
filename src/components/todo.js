@@ -57,18 +57,18 @@ export default class TodoApp extends Component {
   }
   render() {
     return (
-      <div>
-        <h3 className="apptitle">Practice Todo List</h3>
-        <div className="row">
-          <div className="col-md-3">
+      <div id="container">
+        <h2>Todo List</h2>
+        <div>
+          <div>
             <TodoList items={this.state.items} onItemCompleted={this.markItemCompleted} onDeleteItem={this.handleDeleteItem} />
           </div>
         </div>
-        <form className="row">
+        <form>
           <div >
-            <input type="text" className="form-control" onChange={this.handleTextChange} value={this.state.text} />
+            <input type="text" onChange={this.handleTextChange} value={this.state.text} />
           </div>
-          <div >
+          <div className="button-container">
             <button onClick={this.handleAddItem} disabled={!this.state.text}>{"Add #" + (this.state.items.length + 1)}</button>
           </div>
         </form>
@@ -81,11 +81,11 @@ class TodoList extends Component {
   render() {
     let itemLength = (this.props.items.length);
     return (
-      <ul className="todolist">
+      <div className="todolist">
         {this.props.items.map(item => (
           <TodoItem key={item.id} id={item.id} text={item.text} itemLength={itemLength} completed={item.done} onItemCompleted={this.props.onItemCompleted} onDeleteItem={this.props.onDeleteItem} />
         ))}
-      </ul>
+      </div>
     );
   }
 }
@@ -118,12 +118,14 @@ class TodoItem extends Component {
   render() {
     var itemClass = "form-check todoitem " + (this.props.completed ? "done" : "undone");
     return (
-      <ul className={itemClass} ref={li => this._listItem = li}>
-        <label>
-          <input type="checkbox" className="form-check-input" onChange={this.markCompleted} />   {this.props.text}
-        </label>
-        <button type="button" className="btn btn-danger btn-sm" onClick={this.deleteItem}>x</button>
-      </ul>
+      <div className={itemClass} ref={li => this._listItem = li}>
+        <div >
+          <label id='post'>
+            <input type="checkbox" onChange={this.markCompleted} />   {this.props.text}
+          </label>
+          <button id='delete' type="button" onClick={this.deleteItem}>x</button>
+        </div>
+      </div>
     );
   }
 }

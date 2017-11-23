@@ -7,11 +7,22 @@
   margin: 0;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  border-radius: 5px; /* 5px rounded corners */
-  background-color: #015b97;
+  border-radius: 5px;
+  background-image: linear-gradient(to bottom, #001f4b 0%, #FFAE00 100%);
   height: auto;
   overflow: auto;
+  font-family: 'Spectral SC', serif;
+}
 
+h1 {
+  font-family: 'Spectral SC', serif;
+
+}
+
+#mainLogo {
+
+  height: 200px;
+  width: 200px;
 }
 
 .appContainer {

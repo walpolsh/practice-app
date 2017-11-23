@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import mainLogo from './assets/logo.png'
 import Pomodoro from './components/pomodoro';
 import Metronome from './components/metronome';
 import TodoApp from './components/todo';
@@ -10,7 +11,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className='appContainer'>
-          <h1 id='title'>Practice Tracker</h1>
+          <img id='mainLogo' src={mainLogo} />
           <Pomodoro className='Pomodoro' seconds="1500"/>
           <Metronome className='Metronome'/>
           <Microphone />

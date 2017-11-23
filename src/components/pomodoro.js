@@ -96,6 +96,7 @@ export default class Pomodoro extends React.Component {
     }
     return (
       <div id='container'>
+        <h1>Timer</h1>
         <div>Work Periods: {this.state.count}</div>
         <div id='timer'><div id='innertimer'>{display}{plus}{button1}{button2}{minus}</div></div>
       </div>

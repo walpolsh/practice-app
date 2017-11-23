@@ -3,11 +3,25 @@ body {
   margin-top: 50px;
 }
 
+#container{
+ border:1px solid #333;
+ border-radius :20px;
+ width:80%;
+ margin:20px auto;
+ padding:5px;
+ text-align:center;
+ background : #333;
+ box-shadow: 10px 10px;
+}
+
 h1 {
   display: block;
   margin-bottom: 10px;
 }
 
+input {
+  width: 100px;
+}
 .btn {
   margin:0 20px;
 }
@@ -19,4 +33,20 @@ h1 {
 canvas.sound-wave {
   height: 100;
   width: 90%;
+  border-radius : 50px;
+
+}
+
+audio {
+  width: 90%;
+}
+
+.button-container button {
+  background: #001f4b;
+  padding: 10px;
+  border: 1px solid #832420;
+  width: 100px;
+  color: #fff;
+  font-size: 18px;
+  border-radius : 50px;
 }

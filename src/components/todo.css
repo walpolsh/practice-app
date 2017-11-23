@@ -1,7 +1,54 @@
+.todolist {
+  text-align: left;
+}
+
+#container{
+ border:1px solid #333;
+ border-radius :20px;
+ width:80%;
+ margin:20px auto;
+ padding:5px;
+ text-align:center;
+ background : #333;
+}
+
+#delete {
+  float: right;
+}
+
+#post {
+  font-family: Arial, Helvetica, serif;
+  font-size: 12px;
+  overflow-wrap: break-word;
+}
+
 .done {
   text-decoration: line-through;
 }
 
 .undone {
   text-decoration: none;
+}
+
+.highlight {
+  animation: highlight 300ms ease-in-out;
+}
+
+.button-container button {
+  background: #001f4b;
+  padding: 10px;
+  border: 1px solid #832420;
+  border-radius: 2px;
+  width: 100px;
+  color: #fff;
+  font-size: 18px;
+}
+
+@keyframes highlight {
+  0% {
+    background-color: #333;
+  }
+  100% {
+    background-color: yellow;
+  }
 }

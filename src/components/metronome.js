@@ -35,13 +35,15 @@ class Metronome extends Component {
     const bpm = event.target.value;
 
     if(this.state.playing) {
-      clearInterval(this.timer);
-      this.timer = setTimeout(this.playClick, (60 / this.state.bpm) * 1000);
 
       this.setState({
         count: 0,
-        bpm
+        bpm,
+        playing: false
       });
+      clearInterval(this.timer);
+      this.timer = setTimeout(this.playClick, (60 / this.state.bpm) * 1000);
+
     } else {
       this.setState({ bpm });
     }
@@ -62,37 +64,25 @@ class Metronome extends Component {
     }
   }
 
-  componentWillMount() {
-    document.addEventListener("keydown", this.onKeyPressed.bind(this));
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("keydown", this.onKeyPressed.bind(this));
-  }
-
-  onKeyPressed = (e) => {
-    if (e.keyCode === 32) {
-      this.stopStartPlaying();
-    }
-  }
 
   render() {
     const { playing, bpm } = this.state;
     return (
       <div className="metronome">
+        <h2>Metronome</h2>
         <div className='bpm-slider'>
-          <div>{bpm} BPM</div>
           <input
-            type="range"
+            type="number"
             name="bpm-slider"
             min="60"
             max="240"
             value={bpm}
             onChange={this.handleBpmChange}
           />
+          <div>BPM</div>
         </div>
-        <button onClick={this.stopStartPlaying} onKeyDown={this.onKeyPressed} tabIndex='0'>
-          {playing ? 'Stop' : 'Start'}
+        <button onClick={this.stopStartPlaying} tabIndex='0'>
+          {playing ? 'Reset' : 'Start'}
         </button>
       </div>
     );
