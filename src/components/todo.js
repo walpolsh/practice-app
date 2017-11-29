@@ -1,5 +1,28 @@
 import React, { Component } from 'react';
-import './todo.css';
+import './todo';
+const container = {
+  border:'1px solid #333',
+  borderRadius :'20px',
+  width:'80%',
+  margin:'20px auto',
+  padding:'5px',
+  textAlign:'center',
+  background : '#333'
+}
+const button = {
+  background: '#001f4b',
+  padding: '10px',
+  border: '1px solid #832420',
+  borderRadius: '2px',
+  width: '100px',
+  color: '#fff',
+  fontSize: '18px'
+}
+const post = {
+  fontFamily: 'Arial, Helvetica, serif',
+  fontSize: '12px',
+  overflowWrap: 'break-word'
+}
 
 export default class TodoApp extends Component {
   constructor(props) {
@@ -57,7 +80,7 @@ export default class TodoApp extends Component {
   }
   render() {
     return (
-      <div id="container">
+      <div style={container}>
         <h2>Todo List</h2>
         <div>
           <div>
@@ -68,8 +91,9 @@ export default class TodoApp extends Component {
           <div >
             <input type="text" onChange={this.handleTextChange} value={this.state.text} />
           </div>
-          <div className="button-container">
-            <button onClick={this.handleAddItem} disabled={!this.state.text}>{"Add #" + (this.state.items.length + 1)}</button>
+          <div>
+            <button
+              style={button} onClick={this.handleAddItem} disabled={!this.state.text}>{"Add #" + (this.state.items.length + 1)}</button>
           </div>
         </form>
       </div>
@@ -81,7 +105,7 @@ class TodoList extends Component {
   render() {
     let itemLength = (this.props.items.length);
     return (
-      <div className="todolist">
+      <div style={{textAlign: 'left'}}>
         {this.props.items.map(item => (
           <TodoItem key={item.id} id={item.id} text={item.text} itemLength={itemLength} completed={item.done} onItemCompleted={this.props.onItemCompleted} onDeleteItem={this.props.onDeleteItem} />
         ))}
@@ -102,15 +126,11 @@ class TodoItem extends Component {
   deleteItem(event) {
     this.props.onDeleteItem(this.props.id);
   }
-  // Highlight newly added item for several seconds.
   componentDidMount() {
     if (this._listItem) {
-      // 1. Add highlight class.
       this._listItem.classList.add("highlight");
 
-      // 2. Set timeout.
       setTimeout((listItem) => {
-        // 3. Remove highlight class.
         listItem.classList.remove("highlight");
       }, 500, this._listItem);
     }
@@ -120,10 +140,10 @@ class TodoItem extends Component {
     return (
       <div className={itemClass} ref={li => this._listItem = li}>
         <div >
-          <label id='post'>
+          <label style={post}>
             <input type="checkbox" onChange={this.markCompleted} />   {this.props.text}
           </label>
-          <button id='delete' type="button" onClick={this.deleteItem}>x</button>
+          <button style={{float: 'right'}} type="button" onClick={this.deleteItem}>x</button>
         </div>
       </div>
     );

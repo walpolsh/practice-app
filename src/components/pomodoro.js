@@ -5,7 +5,7 @@ export default class Pomodoro extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      seconds: parseInt(props.seconds, 0),
+      seconds: parseInt(1500, 0),
       count: 0
     };
     this.increase = this.increase.bind(this);

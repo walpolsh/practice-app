@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './metronome.css';
 import click1 from '../assets/click1.wav'
 import click2 from '../assets/click2.wav'
 
@@ -41,7 +40,7 @@ class Metronome extends Component {
         bpm,
         playing: false
       });
-      
+
       clearInterval(this.timer);
       this.timer = setTimeout(this.playClick, (60 / this.state.bpm) * 1000);
 
@@ -68,13 +67,36 @@ class Metronome extends Component {
 
   render() {
     const { playing, bpm } = this.state;
+    const metronomeStyle = {
+      border: '1px solid #333',
+      borderRadius: 20,
+      width:'80%',
+      margin:'20px auto',
+      padding:5,
+      textAlign:'center',
+      background : '#333',
+      boxShadow: '10px 10px'
+    }
+    const bpmStyle = {
+      color: 'red',
+      marginBottom: '10px'
+    }
+    const buttonStyle = {
+      background: '#001f4b',
+      padding: '10px',
+      border: '1px solid #832420',
+      borderRadius : '50px',
+      width: '100px',
+      color: '#fff',
+      fontSize: '18px'
+    }
     return (
-      <div className="metronome">
+      <div style={metronomeStyle}>
         <h2>Metronome</h2>
-        <div className='bpm-slider'>
+        <div style={bpmStyle}>
           <input
             type="number"
-            name="bpm-slider"
+            name="bpm"
             min="60"
             max="240"
             value={bpm}
@@ -82,7 +104,7 @@ class Metronome extends Component {
           />
           <div>BPM</div>
         </div>
-        <button onClick={this.stopStartPlaying} tabIndex='0'>
+        <button style={buttonStyle} onClick={this.stopStartPlaying} tabIndex='0'>
           {playing ? 'Reset' : 'Start'}
         </button>
       </div>

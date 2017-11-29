@@ -12,16 +12,6 @@
  background : #333;
 }
 
-#delete {
-  float: right;
-}
-
-#post {
-  font-family: Arial, Helvetica, serif;
-  font-size: 12px;
-  overflow-wrap: break-word;
-}
-
 .done {
   text-decoration: line-through;
 }
@@ -32,16 +22,6 @@
 
 .highlight {
   animation: highlight 300ms ease-in-out;
-}
-
-.button-container button {
-  background: #001f4b;
-  padding: 10px;
-  border: 1px solid #832420;
-  border-radius: 2px;
-  width: 100px;
-  color: #fff;
-  font-size: 18px;
 }
 
 @keyframes highlight {

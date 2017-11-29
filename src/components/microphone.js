@@ -42,10 +42,9 @@ export default class Microphone extends Component {
 
     if(this.state.blobURL !== null && !this.state.isRecording) {
       audioArr.push(blob)
-      audio = audioArr.map((x, i) => (<div key={i}>{i+1}. <audio ref="audioSource" controls="controls" src={x}></audio><button>X</button></div>))
-
+      audio = audioArr.map((x, i) => (<div key={i}>{i+1}. <audio ref="audioSource" controls="controls" src={x}></audio></div>))
     } else if (audioArr.length > 0) {
-      audio = audioArr.map((x, i) => (<div key={i}>{i+1}. <audio ref="audioSource" controls="controls" src={x}></audio><button>X</button></div>))
+      audio = audioArr.map((x, i) => (<div key={i}>{i+1}. <audio ref="audioSource" controls="controls" src={x}></audio></div>))
 
     } else {
       audio = <p>*empty*</p>
